@@ -10,7 +10,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/apis")
 public class MatchController {
-
     @Autowired
     private MatchService matchService;
     @PostMapping("/printScoreBoard")

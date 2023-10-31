@@ -18,8 +18,9 @@ public class ScoreGenerator {
         return outcomes[randomIndex];
     }
     /* Generating the Bowler wickets */
-    public static Map<String, Object> bowlerWicketsDetails() {
+    public static Map<String, Object> bowlerWicketsDetails(Team team) {
         List<String> bowlerData = new ArrayList<>();
+        List<String> bowlerDetails = new ArrayList<>();
         Map<String,Object> wicketDetails = new HashMap<>();
         int totalWickets = 0;
         int totalOvers = 0;
@@ -28,7 +29,12 @@ public class ScoreGenerator {
         int maxWicketsPerBowler = maxWicketsAllowed / bowlerCount;
         int overBowledCount = 0;
         Random random = new Random();
-        for (int bowler = 1; bowler <= bowlerCount; bowler++) {
+
+        for (int i = 5; i < team.getPlayers().size(); i++) {
+            Players bowler = team.getPlayers().get(i);
+
+       /** for (int bowler = 1; bowler <= bowlerCount; bowler++) { */
+
             int wicketsTaken = 0;
             int oversBowled = 0;
 
@@ -41,8 +47,8 @@ public class ScoreGenerator {
                 oversBowled++;
                 totalOvers++;
             }
-           LOGGER.info("Bowler " + bowler + " took " + wicketsTaken + " wickets in " + oversBowled + " overs.");
-            String str = "Bowler " + bowler + " took " + wicketsTaken + " wickets in " + oversBowled + " overs.";
+           LOGGER.info("Bowler " + bowler.getName() + " took " + wicketsTaken + " wickets in " + oversBowled + " overs.");
+            String str = "Bowler " + bowler.getName() + " took " + wicketsTaken + " wickets in " + oversBowled + " overs.";
             overBowledCount += oversBowled;
             bowlerData.add(str);
         }
@@ -128,14 +134,14 @@ public class ScoreGenerator {
 
         responseResultA.put("BattingStat", result(teamA).get("battingScores"));
         responseResultA.put("teamBTotalScores", result(teamA).get("totalScores"));
-        responseResultA.put("teamABowlingStat", bowlerWicketsDetails());
+        responseResultA.put("teamABowlingStat", bowlerWicketsDetails(teamA));
         responseResultA.put("teamId", teamA.getId());
         responseResultA.put("teamName", teamA.getName());
         teamAScores.put("team " + teamA.getName(), responseResultA);
 
         responseResultB.put("BattingStat", result(teamB).get("battingScores"));
         responseResultB.put("teamTotalScores", result(teamB).get("totalScores"));
-        responseResultB.put("teamBowlingStat", bowlerWicketsDetails());
+        responseResultB.put("teamBowlingStat", bowlerWicketsDetails(teamB));
         responseResultB.put("teamId", teamB.getId());
         responseResultB.put("teamName", teamB.getName());
         teamAScores.put("team " + teamB.getName(), responseResultB);
