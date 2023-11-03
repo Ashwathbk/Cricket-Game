@@ -11,7 +11,7 @@
 	<groupId>com.tekion</groupId>
 	<artifactId>cricket-game</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Cricket-Game</name>
+	<name>cricket-game</name>
 	<description>Demo project for Spring Boot with MySql</description>
 	<properties>
 		<java.version>17</java.version>

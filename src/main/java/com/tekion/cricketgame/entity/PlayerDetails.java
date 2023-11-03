@@ -13,13 +13,13 @@ public class PlayerDetails {
     private Long playerDetailsId;
 
     @Column(nullable = false)
-    private Integer teamId; 
+    private Integer teamId; //       FK
 
     @Column(nullable = false)
-    private Integer playerId;
+    private Integer playerId; //        FK
 
     @Column(nullable = false)
-    private Integer matchId;
+    private Integer matchId; //		FK
 
     @Column(nullable = false)
     private Integer runsScored;

@@ -54,6 +54,7 @@ public class ScoreGenerator {
         }
         wicketDetails.put("bowler", bowlerData);
         wicketDetails.put("totalOverBowled", overBowledCount);
+        wicketDetails.put("totalWickets", totalWickets);
 
         LOGGER.info("\nTotal wickets taken by all bowlers: " + totalWickets);
         LOGGER.info("Total overs bowled: " + totalOvers);
@@ -133,18 +134,23 @@ public class ScoreGenerator {
         Map<String, Object> teamAScores = new HashMap<>();
 
         responseResultA.put("BattingStat", result(teamA).get("battingScores"));
-        responseResultA.put("teamBTotalScores", result(teamA).get("totalScores"));
-        responseResultA.put("teamABowlingStat", bowlerWicketsDetails(teamA));
+
+        responseResultA.put("teamTotalScores", result(teamA).get("totalScores"));
+        responseResultA.put("teamBowlingStat", bowlerWicketsDetails(teamA).get("bowler"));
+        responseResultA.put("totalOverBowled", bowlerWicketsDetails(teamA).get("totalOverBowled"));
+        responseResultB.put("totalWickets", bowlerWicketsDetails(teamA).get("totalWickets"));
         responseResultA.put("teamId", teamA.getId());
         responseResultA.put("teamName", teamA.getName());
-        teamAScores.put("team " + teamA.getName(), responseResultA);
+        teamAScores.put("team1",  responseResultA);
 
         responseResultB.put("BattingStat", result(teamB).get("battingScores"));
         responseResultB.put("teamTotalScores", result(teamB).get("totalScores"));
-        responseResultB.put("teamBowlingStat", bowlerWicketsDetails(teamB));
+        responseResultB.put("teamBowlingStat", bowlerWicketsDetails(teamB).get("bowler"));
+        responseResultB.put("totalWickets", bowlerWicketsDetails(teamB).get("totalWickets"));
+
         responseResultB.put("teamId", teamB.getId());
         responseResultB.put("teamName", teamB.getName());
-        teamAScores.put("team " + teamB.getName(), responseResultB);
+        teamAScores.put("team2", responseResultB);
 
         //Total overs bowled and total wicket taken
 

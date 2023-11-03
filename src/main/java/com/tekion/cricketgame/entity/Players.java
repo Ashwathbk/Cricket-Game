@@ -10,6 +10,9 @@ public class Players {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
+//        @Column(nullable = false)
+//        private Long matchId;
+
         @Column(nullable = false)
         private String name;
 
@@ -19,8 +22,11 @@ public class Players {
         @Column(nullable = false)
         private int runsScored;
 
-        @ManyToOne 
-        @JoinColumn(name = "team_id") 
+        @Column(nullable = false)
+        private int wicketTaken;
+
+        @ManyToOne // Assuming this establishes the relationship with Team
+        @JoinColumn(name = "team_id") //foreign key column name
         private Team team;
 
         public Players(String name) {
@@ -28,7 +34,11 @@ public class Players {
             this.runsScored = 0;
         }
 
-        public Players(){
+    public void setRunsScored(int runsScored) {
+        this.runsScored = runsScored;
+    }
+
+    public Players(){
         }
 
         public String getName() {
@@ -62,4 +72,5 @@ public class Players {
         public void setPlayerType(String playerType) {
             this.playerType = playerType;
         }
+
 }

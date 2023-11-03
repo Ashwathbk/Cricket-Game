@@ -18,6 +18,10 @@ public class Match {
     @ManyToOne
     @JoinColumn(name="team_id2", updatable=false)
     private Team team2;
+    private String matchType;
+    private String venue;
+    private String matchResult;
+    private String manOfTheMatch;
 
     public Team getTeam1() {
         return team1;

@@ -1,14 +1,23 @@
 package com.tekion.cricketgame.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.Data;
 
+@Entity
+@Data
 public class InningsDetails {
-   private Long innings_id;
-    private Integer match_id;
-    private Integer team_id;
-    private Integer innings_number;
-    private Integer total_runs;
-    private Integer total_wickets_lost;
-    private Integer total_overs;
-    private Integer total_extras;
+ @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long inningsId;//        PK
+    private Integer matchId;//     FK
+    private Integer teamId; //        FK
+    private Integer inningsNumber;
+    private Integer totalRuns;
+    private Integer totalWicketsLost;
+    private Integer totalOvers;
+    private Integer totalExtras;
 }
