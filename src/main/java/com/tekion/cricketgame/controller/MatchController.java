@@ -2,7 +2,8 @@ package com.tekion.cricketgame.controller;
 
 import com.tekion.cricketgame.entity.InningsDetails;
 import com.tekion.cricketgame.entity.Match;
-import com.tekion.cricketgame.entity.PlayerDetails;
+
+import com.tekion.cricketgame.model.*;
 import com.tekion.cricketgame.entity.ScoreBoard;
 import com.tekion.cricketgame.model.MatchEntry;
 import com.tekion.cricketgame.model.MatchResponse;
@@ -43,4 +44,19 @@ public class MatchController {
         MatchResponse matchResponse = matchService.playTheMatch(match);
         return new ResponseEntity<>(matchResponse, HttpStatus.OK);
     }
+
+    @GetMapping("/getMatchDetailsById/{id}")
+    public ResponseEntity<ScoreBoardResponseModel> getPayerListByMatchId(@PathVariable("id") Long matchId){
+        ScoreBoardResponseModel response = matchService.getScoreBoardByMatchId(matchId);
+        return ResponseEntity.ok().body(response);
+    }
+
+//    @GetMapping(CricketApiConstants.GET_PLAYER_DETAILS_BY_MATCH_ID)
+//    public ResponseEntity<PlayerDetailByMatchResponseModel> getPlayerDetailsByMatchId(@RequestBody MatchMapperModel matchId){
+//
+//        PlayerDetailByMatchResponseModel response = matchService.getPlayerDetailsByMatchId(matchId.getId());
+//        return ResponseEntity.ok().body(response);
+//    }
+
+
 }
