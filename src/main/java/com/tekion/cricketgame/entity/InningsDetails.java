@@ -12,9 +12,9 @@ import lombok.Data;
 public class InningsDetails {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long inningsId;//        PK
-    private Integer matchId;//     FK
-    private Integer teamId; //        FK
+   private Long id;//        PK
+    private Long matchId;//     FK
+    private Long teamId; //        FK
     private Integer inningsNumber;
     private Integer totalRuns;
     private Integer totalWicketsLost;

@@ -14,7 +14,6 @@ public class OverDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long inningsId;
     private Long totalBall;
     private Long totalRuns;
